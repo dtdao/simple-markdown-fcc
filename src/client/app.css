@@ -2,7 +2,40 @@ h1 {
   color: green;
 }
 
+.navbar {
+	margin-bottom: 10px;
+}
+
 body {
   text-align: center;
   margin: auto;
+  font-size: 2vw;
+}
+
+.clearBtn {
+	margin-top: 60px;
+}
+
+#editor{
+	min-width: 100%;
+	max-width: 50%;
+	min-height: 50%;
+	margin-top: 10px;
+	font-size: 12px;
+	margin-bottom: 10px;
+	box-shadow: 6px 6px 5px grey;
+	position: relative;
+	display: inline-block;
+}
+
+#preview {
+	margin-top: 105px;
+	text-align: left;	
+	position: relative;
+
+}
+
+.controlPanel {
+	position: absolute;
+	z-index: 1
 }
