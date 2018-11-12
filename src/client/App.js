@@ -7,10 +7,7 @@ const createMarkdown = (value) =>{
   renderer.link = (href, title, text) => {
     return '<a target="_blank" href="'+ href + '" title="' + title +'"">' + text +'</a>'
   }
-  renderer.br = () => {
-    return "<br>"
-  }
-  return {__html: marked(value, {santize: true, renderer: renderer})}
+  return {__html: marked(value, {renderer: renderer,breaks: true})}
 }
 
 const TextField = ({value}) => {
@@ -34,15 +31,10 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      value: testerText,
-      showModal: false
+      value: testerText
     }
-
-
     this.handleChange = this.handleChange.bind(this);
     this.handleClear = this.handleClear.bind(this);
-    this.handlePreviewFocus = this.handlePreviewFocus.bind(this);
-    this.handleEditorFocus = this.handleEditorFocus.bind(this);
 
   }
   handleChange(event){
@@ -55,17 +47,6 @@ export default class App extends Component {
     this.setState({
       value: ''
     });
-  }
-
-  handlePreviewFocus(event) {
-    this.setState({
-      modal: true
-    })
-
-  }
-
-  handleEditorFocus(event){
-
   }
 
   render() {
@@ -83,10 +64,10 @@ export default class App extends Component {
           <div className="row">
             <div className="col-xs-6">
               <button type="button" className="btn btn-danger pull-right clearBtn" onClick={this.handleClear}>Clear</button>
-              <TextEditor value={value} onChange={this.handleChange}/>
+              <TextEditor value={this.state.value} onChange={this.handleChange}/>
             </div>
             <div className="col-xs-6">
-              <TextField value={value} />
+              <TextField value={this.state.value} />
             </div>
           </div>
         </div>
@@ -117,7 +98,7 @@ You can also make text **bold**... whoa!
 Or _italic_.
 Or... wait for it... **_both!_**
 And feel free to go crazy ~~crossing stuff out~~.
-
+<h1>Hello World</h1>
 There's also [links](https://www.freecodecamp.com), and
 > Block Quotes!
 
